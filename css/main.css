@@ -72,3 +72,11 @@ button {
     padding: 20px;
     margin: 15px;
 }
+
+.player-one {
+    background-color: red;
+}
+
+.player-two {
+    background-color: yellow;
+}

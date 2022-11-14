@@ -1,35 +1,12 @@
   /*----- constants -----*/
-  let gameBoard = [[0, 0, 0, 0], 
-                   [0, 0, 0, 0],  
-                   [0, 0, 0, 0], 
-                   [0, 0, 0, 0]];
-
-const randomStart = Math.floor(Math.random() * 2) + 1;
+  const randomStart = Math.floor(Math.random() * 2) + 1;
 
 
   /*----- state variables -----*/
+  let gameBoard;
+  let playerTurn;
 
 
-  let playerTurn = null; //set to 0 or 1 to determine player's turn
-
-init();
-
-
-function init(){
-  let gameBoard = [[0, 0, 0, 0], 
-                     [0, 0, 0, 0],  
-                     [0, 0, 0, 0], 
-                     [0, 0, 0, 0]];
-  
-  playerTurn = randomStart;
-  console.log(playerTurn);
-  if (playerTurn === 1){
-    console.log("Player One's Turn")
-  } else{
-    console.log("Player Two's Turn");
-  };
-
-};
 
 
   /*----- cached elements  -----*/
@@ -38,11 +15,13 @@ function init(){
   const buttonEl3 = document.querySelector('#button3');
   const buttonEl4 = document.querySelector('#button4');
 
-  const spanEl = document.querySelector('.slots');
   const div1El = document.querySelector('.column1');
   const div2El = document.querySelector('.column2');
   const div3El = document.querySelector('.column3');
   const div4El = document.querySelector('.column4');
+
+  const turnEl = document.querySelector('.turn-announcement');
+  const announceEl = document.querySelector('.announcement')
 
 
   /*----- event listeners -----*/
@@ -53,16 +32,37 @@ buttonEl4.addEventListener('click', fillColumn4);
 
 
   /*----- functions -----*/
+  init();
+
+  function init(){
+   gameBoard =      [[0, 0, 0, 0], 
+                     [0, 0, 0, 0],  
+                     [0, 0, 0, 0], 
+                     [0, 0, 0, 0]];
+  
+  playerTurn = randomStart;
+  
+  render();
+
+  };
+  
+  
   function fillColumn1() {
     for (let i = gameBoard.length - 1; i >= 0; i-- ) {
       if (gameBoard[i][0] === 0){
         gameBoard[i][0] = playerTurn; 
-        console.log(gameBoard);
-        return;
+        if (playerTurn === 1){
+          div1El.children[i].classList.add('player-one');
+          playerTurn = 2;
+        } else {
+          div1El.children[i].classList.add('player-two');
+          playerTurn = 1;
+        }
+        return render();
       };
         };
     if (gameBoard[0][0] !==0){
-      console.log('No available slots');
+      announceEl.innerText = "No available slots";
       return;
     };
   };
@@ -71,12 +71,19 @@ buttonEl4.addEventListener('click', fillColumn4);
     for (let i = gameBoard.length - 1; i >= 0; i-- ) {
       if (gameBoard[i][1] === 0){
         gameBoard[i][1] = playerTurn; 
-        return console.log(gameBoard);
+        if (playerTurn === 1){
+          div2El.children[i].classList.add('player-one');
+          playerTurn = 2;
+        } else {
+          div2El.children[i].classList.add('player-two');
+          playerTurn = 1;
+        }
+        return render();
       };
         };
       if (gameBoard[0][1] !==0){
-      console.log('No available slots'); //will change to an HTML message at later date
-      return;
+        announceEl.innerText = "No available slots";
+        return;
     };
   };
 
@@ -84,12 +91,19 @@ buttonEl4.addEventListener('click', fillColumn4);
     for (let i = gameBoard.length - 1; i >= 0; i-- ) {
       if (gameBoard[i][2] === 0){
         gameBoard[i][2] = playerTurn; 
-        return console.log(gameBoard);
+        if (playerTurn === 1){
+          div3El.children[i].classList.add('player-one');
+          playerTurn = 2;
+        } else {
+          div3El.children[i].classList.add('player-two');
+          playerTurn = 1;
+        }
+        return render();
       };
         };
       if (gameBoard[0][2] !==0){
-      console.log('No available slots'); //will change to an an HTML message at later date
-      return;
+        announceEl.innerText = "No available slots";
+        return;
     };
   };
 
@@ -97,11 +111,27 @@ buttonEl4.addEventListener('click', fillColumn4);
     for (let i = gameBoard.length - 1; i >= 0; i-- ) {
       if (gameBoard[i][3] === 0){
         gameBoard[i][3] = playerTurn; 
-        return console.log(gameBoard);
+        if (playerTurn === 1){
+          div4El.children[i].classList.add('player-one');
+          playerTurn = 2;
+        } else {
+          div4El.children[i].classList.add('player-two');
+          playerTurn = 1;
+        }
+        return render();
       };
         };
       if (gameBoard[0][3] !==0){
-      console.log('No available slots'); //will change to an an HTML message at later date
-      return;
+        announceEl.innerText = "No available slots";
+        return;
     };
+  };
+
+  function render() {
+    announceEl.innerText = "";
+    if(playerTurn === 1){
+      turnEl.innerText = "Player One's Turn";
+    } else {
+      turnEl.innerText = "Player Two's Turn";
+    }
   };
