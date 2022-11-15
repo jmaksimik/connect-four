@@ -220,9 +220,23 @@ buttonEl4.addEventListener('click', fillColumn4);
         buttonEl4.disabled = true;
         return winningPlayer = 2;
       };
-};
+    };
+  };
 
-        };
+  function checkTie(){
+    if(!gameBoard.flat().includes(0)){
+      announceEl.innerText = "It's a tie!";
+      turnEl.innerText = "";
+      buttonEl1.disabled = true;
+      buttonEl2.disabled = true;
+      buttonEl3.disabled = true;
+      buttonEl4.disabled = true;
+      return;
+    };
+  };
+
+
+
   function render() {
     
     announceEl.innerText = "";
@@ -235,6 +249,7 @@ buttonEl4.addEventListener('click', fillColumn4);
     checkHorizontal();
     checkVertical();
     checkDiagonal();
+    checkTie();
 
     if(winningPlayer === 1){
       announceEl.innerText = "Player One Wins!";
