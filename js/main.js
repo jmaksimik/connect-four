@@ -158,12 +158,38 @@ buttonEl4.addEventListener('click', fillColumn4);
     });
   };
 
+  function checkVertical() {
+    for(let i = 0; i < gameBoard.length; i++){
+      for(let j = 0; j < gameBoard[i].length; j++){
+        if(matchChecker(gameBoard[0][j], gameBoard[1][j], gameBoard[2][j], gameBoard[3][j])){
+          if(gameBoard[i] === 1 && gameBoard[j] === 1){
+            buttonEl1.disabled = true;
+            buttonEl2.disabled = true;
+            buttonEl3.disabled = true;
+            buttonEl4.disabled = true;
+            announceEl.innerText = "Player One Wins!"
+            return turnEl.innerText = "";
+          } else {
+            buttonEl1.disabled = true;
+            buttonEl2.disabled = true;
+            buttonEl3.disabled = true;
+            buttonEl4.disabled = true;
+            announceEl.innerText = "Player Two Wins!"
+            return turnEl.innerText = "";
+          };
+        };
+      };;
+    };
+  };
+
   function render() {
     announceEl.innerText = "";
-    checkHorizontal();
     if(playerTurn === 1){
       turnEl.innerText = "Player One's Turn";
     } else {
       turnEl.innerText = "Player Two's Turn";
-    }
+    };
+    checkHorizontal();
+    checkVertical();
+
   };
