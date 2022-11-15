@@ -5,6 +5,7 @@
   /*----- state variables -----*/
   let gameBoard;
   let playerTurn;
+  let winningPlayer;
 
 
 
@@ -58,12 +59,11 @@ buttonEl4.addEventListener('click', fillColumn4);
         gameBoard[i][0] = playerTurn; 
         if (playerTurn === 1){
           div1El.children[i].classList.add('player-one');
-          playerTurn = 2;
+          return render();
         } else {
           div1El.children[i].classList.add('player-two');
-          playerTurn = 1;
-        }
-        return render();
+          return render();
+        };
       };
         };
     if (gameBoard[0][0] !==0){
@@ -78,10 +78,8 @@ buttonEl4.addEventListener('click', fillColumn4);
         gameBoard[i][1] = playerTurn; 
         if (playerTurn === 1){
           div2El.children[i].classList.add('player-one');
-          playerTurn = 2;
         } else {
           div2El.children[i].classList.add('player-two');
-          playerTurn = 1;
         }
         return render();
       };
@@ -98,10 +96,8 @@ buttonEl4.addEventListener('click', fillColumn4);
         gameBoard[i][2] = playerTurn; 
         if (playerTurn === 1){
           div3El.children[i].classList.add('player-one');
-          playerTurn = 2;
         } else {
           div3El.children[i].classList.add('player-two');
-          playerTurn = 1;
         }
         return render();
       };
@@ -118,10 +114,8 @@ buttonEl4.addEventListener('click', fillColumn4);
         gameBoard[i][3] = playerTurn; 
         if (playerTurn === 1){
           div4El.children[i].classList.add('player-one');
-          playerTurn = 2;
         } else {
           div4El.children[i].classList.add('player-two');
-          playerTurn = 1;
         }
         return render();
       };
@@ -139,20 +133,18 @@ buttonEl4.addEventListener('click', fillColumn4);
   function checkHorizontal() {
     gameBoard.forEach(function(arr) {
       if(matchChecker(arr[0], arr[1], arr[2], arr[3])){
-        if(arr[0] === 1){
+        if(playerTurn === 1){
           buttonEl1.disabled = true;
           buttonEl2.disabled = true;
           buttonEl3.disabled = true;
           buttonEl4.disabled = true;
-          announceEl.innerText = "Player One Wins!"
-          return turnEl.innerText = "";
+          return winningPlayer = 1;
         } else {
           buttonEl1.disabled = true;
           buttonEl2.disabled = true;
           buttonEl3.disabled = true;
           buttonEl4.disabled = true;
-          announceEl.innerText = "Player Two Wins!";
-          return turnEl.innerText = "";
+          return winningPlayer = 2;
         };
       };
     });
@@ -162,34 +154,68 @@ buttonEl4.addEventListener('click', fillColumn4);
     for(let i = 0; i < gameBoard.length; i++){
       for(let j = 0; j < gameBoard[i].length; j++){
         if(matchChecker(gameBoard[0][j], gameBoard[1][j], gameBoard[2][j], gameBoard[3][j])){
-          if(gameBoard[i] === 1 && gameBoard[j] === 1){
+          if(playerTurn === 1){
             buttonEl1.disabled = true;
             buttonEl2.disabled = true;
             buttonEl3.disabled = true;
             buttonEl4.disabled = true;
-            announceEl.innerText = "Player One Wins!"
-            return turnEl.innerText = "";
+            return winningPlayer = 1;
           } else {
             buttonEl1.disabled = true;
             buttonEl2.disabled = true;
             buttonEl3.disabled = true;
             buttonEl4.disabled = true;
-            announceEl.innerText = "Player Two Wins!"
-            return turnEl.innerText = "";
+            return winningPlayer = 2;
           };
         };
-      };;
+      };
     };
   };
 
-  function render() {
-    announceEl.innerText = "";
-    if(playerTurn === 1){
-      turnEl.innerText = "Player One's Turn";
-    } else {
-      turnEl.innerText = "Player Two's Turn";
+  function checkDiagonal() {
+    for(let i = 0; i < gameBoard.length; i++){
+      for(let j = 0; j < gameBoard.length; j++){
+        if(matchChecker(gameBoard[0][j], gameBoard[1][j], gameBoard[2][j], gameBoard[3][j] || 
+                        gameBoard[0][j+3], gameBoard[1][j+1], gameBoard[2][j-1], gameBoard[3][j-3])){
+                          if(playerTurn === 1){
+                            buttonEl1.disabled = true;
+                            buttonEl2.disabled = true;
+                            buttonEl3.disabled = true;
+                            buttonEl4.disabled = true;
+                            return winningPlayer = 1;
+                          } else { 
+                            buttonEl1.disabled = true;
+                            buttonEl2.disabled = true;
+                            buttonEl3.disabled = true;
+                            buttonEl4.disabled = true;
+                            return winningPlayer = 2;
+                          };
+          };
+      };
     };
+  };
+    
+  function render() {
+    turnEl.innerText = "";
+    announceEl.innerText = "";
+
     checkHorizontal();
     checkVertical();
+    checkDiagonal();
 
+    if(playerTurn === 1){
+      playerTurn = 2;
+      turnEl.innerText = "Player Two's Turn";
+    } else {
+      playerTurn = 1;
+      turnEl.innerText = "Player One's Turn";
+    }
+
+    if(winningPlayer === 1){
+      announceEl.innerText = "Player One Wins!";
+      turnEl.innerText = "";
+    } else if(winningPlayer === 2){
+      announceEl.innerText = "Player One Wins";
+      turnEl.innerText = "";
+    }
   };
