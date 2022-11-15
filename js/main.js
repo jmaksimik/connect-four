@@ -62,8 +62,9 @@ buttonEl4.addEventListener('click', fillColumn4);
           return render();
         } else {
           div1El.children[i].classList.add('player-two');
-          return render();
+          playerTurn = 1;
         };
+        return render();
       };
         };
     if (gameBoard[0][0] !==0){
@@ -196,20 +197,27 @@ buttonEl4.addEventListener('click', fillColumn4);
   };
     
   function render() {
-    turnEl.innerText = "";
+    
     announceEl.innerText = "";
+    if(playerTurn === 1){
+      turnEl.innerText = "Player One's Turn";
+    } else {
+      turnEl.innerText = "Player Two's Turn";
+    };
 
     checkHorizontal();
     checkVertical();
     checkDiagonal();
 
-    if(playerTurn === 1){
-      playerTurn = 2;
-      turnEl.innerText = "Player Two's Turn";
-    } else {
-      playerTurn = 1;
-      turnEl.innerText = "Player One's Turn";
-    }
+    
+
+    // if(playerTurn === 1){
+    //   playerTurn = 2;
+    //   turnEl.innerText = "Player Two's Turn";
+    // } else {
+    //   playerTurn = 1;
+    //   turnEl.innerText = "Player One's Turn";
+    // }
 
     if(winningPlayer === 1){
       announceEl.innerText = "Player One Wins!";
@@ -217,5 +225,6 @@ buttonEl4.addEventListener('click', fillColumn4);
     } else if(winningPlayer === 2){
       announceEl.innerText = "Player One Wins";
       turnEl.innerText = "";
+   
     }
   };
