@@ -42,6 +42,11 @@ buttonEl4.addEventListener('click', fillColumn4);
   
   playerTurn = randomStart;
   
+  buttonEl1.disabled = false;
+  buttonEl2.disabled = false;
+  buttonEl3.disabled = false;
+  buttonEl4.disabled = false;
+  
   render();
 
   };
@@ -127,8 +132,35 @@ buttonEl4.addEventListener('click', fillColumn4);
     };
   };
 
+  function matchChecker(w, x, y, z){
+    return ((w !==0) && (w === x) && (w === y) && (w === z));
+  }
+
+  function checkHorizontal() {
+    gameBoard.forEach(function(arr) {
+      if(matchChecker(arr[0], arr[1], arr[2], arr[3])){
+        if(arr[0] === 1){
+          buttonEl1.disabled = true;
+          buttonEl2.disabled = true;
+          buttonEl3.disabled = true;
+          buttonEl4.disabled = true;
+          announceEl.innerText = "Player One Wins!"
+          return turnEl.innerText = "";
+        } else {
+          buttonEl1.disabled = true;
+          buttonEl2.disabled = true;
+          buttonEl3.disabled = true;
+          buttonEl4.disabled = true;
+          announceEl.innerText = "Player Two Wins!";
+          return turnEl.innerText = "";
+        };
+      };
+    });
+  };
+
   function render() {
     announceEl.innerText = "";
+    checkHorizontal();
     if(playerTurn === 1){
       turnEl.innerText = "Player One's Turn";
     } else {
