@@ -1,5 +1,6 @@
 /*----- constants -----*/
-const randomStart = Math.floor(Math.random() * 2) + 1;
+const chipSound = 'audio/chip-click.mp3';
+
 
 
 /*----- state variables -----*/
@@ -15,11 +16,13 @@ const buttonEl1 = document.querySelector('#button1');
 const buttonEl2 = document.querySelector('#button2');
 const buttonEl3 = document.querySelector('#button3');
 const buttonEl4 = document.querySelector('#button4');
+const resetEl = document.querySelector('#reset');
 
 const div1El = document.querySelector('.column1');
 const div2El = document.querySelector('.column2');
 const div3El = document.querySelector('.column3');
 const div4El = document.querySelector('.column4');
+const spanEls = document.querySelectorAll('span');
 
 const turnEl = document.querySelector('.turn-announcement');
 const announceEl = document.querySelector('.announcement')
@@ -30,6 +33,7 @@ buttonEl1.addEventListener('click', fillColumn1);
 buttonEl2.addEventListener('click', fillColumn2);
 buttonEl3.addEventListener('click', fillColumn3);
 buttonEl4.addEventListener('click', fillColumn4);
+resetEl.addEventListener('click', init);
 
 
 /*----- functions -----*/
@@ -41,12 +45,19 @@ function init() {
   [0, 0, 0, 0],
   [0, 0, 0, 0]];
 
+  const randomStart = Math.floor(Math.random() * 2) + 1;
   playerTurn = randomStart;
 
   buttonEl1.disabled = false;
   buttonEl2.disabled = false;
   buttonEl3.disabled = false;
   buttonEl4.disabled = false;
+
+  spanEls.forEach(function (element) {
+    element.classList.remove('player-one', 'player-two');
+  });
+
+
 
   render();
 
