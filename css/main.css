@@ -26,11 +26,16 @@ div {
     grid-column-start: 2;
 }
 
+aside {
+    grid-column-start: 1;
+    text-align: center;
+}
+
 section {
     display: flex;
     background-color: rgb(37, 61, 141);
     justify-content: space-between;
-    margin: 20px auto 0;
+    margin: 10px auto 0;
     grid-column-start: 2;
 }
 
@@ -53,7 +58,8 @@ button {
 
 .top {
     margin-top: 30px;
-    height: 20px;
+    height: 50px;
+    padding: 2.5px;
 }
 
 .column1 {
@@ -85,6 +91,14 @@ button {
     margin: 15px;
 }
 
+.reset-area {
+    display: flex;
+    grid-row-start: 3;
+    grid-column-start: 3;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
 .player-one {
     background-color: red;
 }
@@ -95,6 +109,7 @@ button {
 
 
 #reset {
-    grid-row-start: 4;
-    margin-left: 150px;
+    height: 50px;
+    width: 100px;
+    border-radius: 50%;
 }

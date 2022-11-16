@@ -1,5 +1,5 @@
 /*----- constants -----*/
-const chipSound = 'audio/chip-click.mp3';
+const chipSound = new Audio();
 
 
 
@@ -29,10 +29,26 @@ const announceEl = document.querySelector('.announcement')
 
 
 /*----- event listeners -----*/
-buttonEl1.addEventListener('click', fillColumn1);
-buttonEl2.addEventListener('click', fillColumn2);
-buttonEl3.addEventListener('click', fillColumn3);
-buttonEl4.addEventListener('click', fillColumn4);
+buttonEl1.addEventListener('click', function(){
+  fillColumn1();
+  playAudio();
+});
+
+buttonEl2.addEventListener('click', function(){
+  fillColumn2();
+  playAudio();
+});
+
+buttonEl3.addEventListener('click', function(){
+  fillColumn3();
+  playAudio();
+});
+
+buttonEl4.addEventListener('click', function(){
+  fillColumn4();
+  playAudio();
+});
+
 resetEl.addEventListener('click', init);
 
 
@@ -40,10 +56,13 @@ resetEl.addEventListener('click', init);
 init();
 
 function init() {
+
   gameBoard = [[0, 0, 0, 0],
   [0, 0, 0, 0],
   [0, 0, 0, 0],
   [0, 0, 0, 0]];
+
+  winningPlayer = null;
 
   const randomStart = Math.floor(Math.random() * 2) + 1;
   playerTurn = randomStart;
@@ -61,6 +80,11 @@ function init() {
 
   render();
 
+};
+
+function playAudio() {
+  chipSound.src = 'audio/chip-click.mp3';
+  chipSound.play();
 };
 
 
@@ -184,14 +208,12 @@ function checkVertical() {
           buttonEl2.disabled = true;
           buttonEl3.disabled = true;
           buttonEl4.disabled = true;
-          console.log('player 1 won')
           return winningPlayer = 1;
         } else {
           buttonEl1.disabled = true;
           buttonEl2.disabled = true;
           buttonEl3.disabled = true;
           buttonEl4.disabled = true;
-          console.log('player 2 won')
           return winningPlayer = 2;
         };
       };
