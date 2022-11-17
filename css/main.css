@@ -26,17 +26,20 @@ div {
     grid-column-start: 2;
 }
 
-aside {
-    grid-column-start: 1;
-    text-align: center;
-}
-
 section {
     display: flex;
     background-color: rgb(37, 61, 141);
     justify-content: space-between;
     margin: 20px auto 0;
     grid-column-start: 2;
+}
+
+aside {
+    display: grid;
+    grid-column-start: 1;
+    grid-row-start: 3;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 
 button {
