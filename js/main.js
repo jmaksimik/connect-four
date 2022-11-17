@@ -1,5 +1,6 @@
 /*----- constants -----*/
 const chipSound = new Audio();
+const winSound = new Audio();
 let player1Points = 0;
 let player2Points = 0;
 let tieCount = 0;
@@ -71,6 +72,11 @@ function init() {
 function playAudio() {
   chipSound.src = 'audio/chip-click.mp3';
   chipSound.play();
+};
+
+function playWin() {
+  winSound.src = 'audio/player-win.mp3';
+  winSound.play();
 };
 
 function disableButtons(){
@@ -264,10 +270,14 @@ function callWinner(){
   if (winningPlayer === 1) {
     announceEl.innerText = "Player One Wins!";
     turnEl.innerText = "";
+    playWin();
   } else if (winningPlayer === 2) {
     announceEl.innerText = "Player Two Wins";
     turnEl.innerText = "";
-  };
+    playWin();
+  } else {
+    return;
+  }
 };
 
 function turnAnnouncement(){
