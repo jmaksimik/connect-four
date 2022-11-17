@@ -36,22 +36,22 @@ const announceEl = document.querySelector('.announcement')
 
 
 /*----- event listeners -----*/
-buttonEl1.addEventListener('click', function(){
+buttonEl1.addEventListener('click', function () {
   fillColumn1();
   playAudio();
 });
 
-buttonEl2.addEventListener('click', function(){
+buttonEl2.addEventListener('click', function () {
   fillColumn2();
   playAudio();
 });
 
-buttonEl3.addEventListener('click', function(){
+buttonEl3.addEventListener('click', function () {
   fillColumn3();
   playAudio();
 });
 
-buttonEl4.addEventListener('click', function(){
+buttonEl4.addEventListener('click', function () {
   fillColumn4();
   playAudio();
 });
@@ -79,26 +79,26 @@ function playWin() {
   winSound.play();
 };
 
-function disableButtons(){
+function disableButtons() {
   buttonEl1.disabled = true;
   buttonEl2.disabled = true;
   buttonEl3.disabled = true;
   buttonEl4.disabled = true;
 };
 
-function reanableButtons(){
+function reanableButtons() {
   buttonEl1.disabled = false;
   buttonEl2.disabled = false;
   buttonEl3.disabled = false;
   buttonEl4.disabled = false;
 };
 
-function chooseStartPlayer(){
+function chooseStartPlayer() {
   const randomStart = Math.floor(Math.random() * 2) + 1;
   playerTurn = randomStart;
 };
 
-function clearBoard(){
+function clearBoard() {
   gameBoard = [[0, 0, 0, 0],
   [0, 0, 0, 0],
   [0, 0, 0, 0],
@@ -266,7 +266,7 @@ function checkTie() {
   };
 };
 
-function callWinner(){
+function callWinner() {
   if (winningPlayer === 1) {
     announceEl.innerText = "Player One Wins!";
     turnEl.innerText = "";
@@ -280,7 +280,7 @@ function callWinner(){
   }
 };
 
-function turnAnnouncement(){
+function turnAnnouncement() {
   announceEl.innerText = "";
   if (playerTurn === 1) {
     turnEl.innerText = "Player One's Turn";
@@ -289,12 +289,12 @@ function turnAnnouncement(){
   };
 };
 
-function addPoints(){
-  if(winningPlayer === 1){
+function addPoints() {
+  if (winningPlayer === 1) {
     player1Points++;
-  } else if(winningPlayer === 2){
+  } else if (winningPlayer === 2) {
     player2Points++;
-  } else if(winningPlayer === 3){
+  } else if (winningPlayer === 3) {
     tieCount++;
   };
   player1ScoreEl.innerText = player1Points;

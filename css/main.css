@@ -2,7 +2,7 @@ body {
     margin: 0;
     height: 100vh;
     background-color: white;
-    display: grid;  
+    display: grid;
     grid-template-rows: 130px 1fr 1fr 120px;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
@@ -46,20 +46,20 @@ aside {
 }
 
 button {
-    display:inline-block;
-    padding:0.7em 1.4em;
-    margin:0 0.3em 0.3em 0;
-    border-radius:0.15em;
+    display: inline-block;
+    padding: 0.7em 1.4em;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.15em;
     box-sizing: border-box;
-    text-decoration:none;
-    font-family:'Roboto',sans-serif;
-    text-transform:uppercase;
-    font-weight:400;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
     color: black;
-    background-color:#c7c700;
-    box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
-    text-align:center;
-    position:relative;
+    background-color: #c7c700;
+    box-shadow: inset 0 -0.6em 0 -0.35em rgba(0, 0, 0, 0.17);
+    text-align: center;
+    position: relative;
 }
 
 .top {
@@ -76,17 +76,17 @@ button {
     padding: 0 80px;
 }
 
-aside > h2 {
+aside>h2 {
     border-bottom: 3px ridge #333399;
     width: 200px;
     padding: 5px;
 }
 
-.player-list > h3 {
+.player-list>h3 {
     margin: 15px;
 }
 
-.points > h3 {
+.points>h3 {
     margin: 15px;
 }
 
