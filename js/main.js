@@ -1,5 +1,8 @@
 /*----- constants -----*/
 const chipSound = new Audio();
+let player1Points = 0;
+let player2Points = 0;
+let tieCount = 0;
 
 
 
@@ -23,6 +26,9 @@ const div2El = document.querySelector('.column2');
 const div3El = document.querySelector('.column3');
 const div4El = document.querySelector('.column4');
 const spanEls = document.querySelectorAll('span');
+const player1ScoreEl = document.querySelector('#player-one-points');
+const player2ScoreEl = document.querySelector('#player-two-points');
+const tieScoreEl = document.querySelector('#tie-points');
 
 const turnEl = document.querySelector('.turn-announcement');
 const announceEl = document.querySelector('.announcement')
@@ -249,6 +255,7 @@ function checkTie() {
     announceEl.innerText = "It's a tie!";
     turnEl.innerText = "";
     disableButtons();
+    winningPlayer = 3;
     return;
   };
 };
@@ -272,6 +279,20 @@ function turnAnnouncement(){
   };
 };
 
+function addPoints(){
+  if(winningPlayer === 1){
+    player1Points++;
+  } else if(winningPlayer === 2){
+    player2Points++;
+  } else if(winningPlayer === 3){
+    tieCount++;
+  };
+  player1ScoreEl.innerText = player1Points;
+  player2ScoreEl.innerText = player2Points;
+  tieScoreEl.innerText = tieCount;
+  return;
+};
+
 
 function render() {
   turnAnnouncement();
@@ -280,4 +301,5 @@ function render() {
   checkDiagonal();
   checkTie();
   callWinner();
+  addPoints();
 };
