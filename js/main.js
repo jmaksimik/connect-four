@@ -1,5 +1,7 @@
 /*----- constants -----*/
 const chipSound = new Audio();
+const winSound = new Audio();
+
 
 
 
@@ -7,7 +9,9 @@ const chipSound = new Audio();
 let gameBoard;
 let playerTurn;
 let winningPlayer;
-
+let player1Points = 0;
+let player2Points = 0;
+let tieCount = 0;
 
 
 
@@ -23,28 +27,31 @@ const div2El = document.querySelector('.column2');
 const div3El = document.querySelector('.column3');
 const div4El = document.querySelector('.column4');
 const spanEls = document.querySelectorAll('span');
+const player1ScoreEl = document.querySelector('#player-one-points');
+const player2ScoreEl = document.querySelector('#player-two-points');
+const tieScoreEl = document.querySelector('#tie-points');
 
 const turnEl = document.querySelector('.turn-announcement');
 const announceEl = document.querySelector('.announcement')
 
 
 /*----- event listeners -----*/
-buttonEl1.addEventListener('click', function(){
+buttonEl1.addEventListener('click', function () {
   fillColumn1();
   playAudio();
 });
 
-buttonEl2.addEventListener('click', function(){
+buttonEl2.addEventListener('click', function () {
   fillColumn2();
   playAudio();
 });
 
-buttonEl3.addEventListener('click', function(){
+buttonEl3.addEventListener('click', function () {
   fillColumn3();
   playAudio();
 });
 
-buttonEl4.addEventListener('click', function(){
+buttonEl4.addEventListener('click', function () {
   fillColumn4();
   playAudio();
 });
@@ -67,26 +74,31 @@ function playAudio() {
   chipSound.play();
 };
 
-function disableButtons(){
+function playWin() {
+  winSound.src = 'audio/player-win.mp3';
+  winSound.play();
+};
+
+function disableButtons() {
   buttonEl1.disabled = true;
   buttonEl2.disabled = true;
   buttonEl3.disabled = true;
   buttonEl4.disabled = true;
 };
 
-function reanableButtons(){
+function reanableButtons() {
   buttonEl1.disabled = false;
   buttonEl2.disabled = false;
   buttonEl3.disabled = false;
   buttonEl4.disabled = false;
 };
 
-function chooseStartPlayer(){
+function chooseStartPlayer() {
   const randomStart = Math.floor(Math.random() * 2) + 1;
   playerTurn = randomStart;
 };
 
-function clearBoard(){
+function clearBoard() {
   gameBoard = [[0, 0, 0, 0],
   [0, 0, 0, 0],
   [0, 0, 0, 0],
@@ -249,27 +261,46 @@ function checkTie() {
     announceEl.innerText = "It's a tie!";
     turnEl.innerText = "";
     disableButtons();
+    winningPlayer = 3;
     return;
   };
 };
 
-function callWinner(){
+function callWinner() {
   if (winningPlayer === 1) {
     announceEl.innerText = "Player One Wins!";
     turnEl.innerText = "";
+    playWin();
   } else if (winningPlayer === 2) {
-    announceEl.innerText = "Player Two Wins";
+    announceEl.innerText = "Player Two Wins!";
     turnEl.innerText = "";
-  };
+    playWin();
+  } else {
+    return;
+  }
 };
 
-function turnAnnouncement(){
+function turnAnnouncement() {
   announceEl.innerText = "";
   if (playerTurn === 1) {
     turnEl.innerText = "Player One's Turn";
   } else {
     turnEl.innerText = "Player Two's Turn";
   };
+};
+
+function addPoints() {
+  if (winningPlayer === 1) {
+    player1Points++;
+  } else if (winningPlayer === 2) {
+    player2Points++;
+  } else if (winningPlayer === 3) {
+    tieCount++;
+  };
+  player1ScoreEl.innerText = player1Points;
+  player2ScoreEl.innerText = player2Points;
+  tieScoreEl.innerText = tieCount;
+  return;
 };
 
 
@@ -280,4 +311,5 @@ function render() {
   checkDiagonal();
   checkTie();
   callWinner();
+  addPoints();
 };

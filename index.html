@@ -7,10 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css" type="text/css">
     <script defer src="js/main.js"></script>
-    <title>Document</title>
+    <title>Connect Four by John M.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -20,18 +23,18 @@
     </div>
     <aside>
         <h2>Points</h2>
-        <div class = "points-layout">
-            <div class = "player-list">
+        <div class="points-layout">
+            <div class="player-list">
                 <h3>Player One:</h3>
                 <h3>Player Two:</h3>
                 <h3>Tie:</h3>
             </div>
-            <div class = "points">
-                <h3 id = "player-one-points">0</h3>  
-                <h3 id = "player-two points">0</h3>
-                <h3 id = "player-three points">0</h3>
-            </div>        
-        </div> 
+            <div class="points">
+                <h3 id="player-one-points">0</h3>
+                <h3 id="player-two-points">0</h3>
+                <h3 id="tie-points">0</h3>
+            </div>
+        </div>
     </aside>
     <section class="board">
         <div class="column1">
@@ -39,35 +42,35 @@
             <span class="slots" id="[1][0]"></span>
             <span class="slots" id="[2][0]"></span>
             <span class="slots" id="[3][0]"></span>
-            <button class = "game-button" id="button1">Drop Chip</button>
+            <button class="game-button" id="button1">Drop Chip</button>
         </div>
         <div class="column2">
             <span class="slots" id="[0][1]"></span>
             <span class="slots" id="[1][1]"></span>
             <span class="slots" id="[2][1]"></span>
             <span class="slots" id="[3][1]"></span>
-            <button class = "game-button" id="button2">Drop Chip</button>
+            <button class="game-button" id="button2">Drop Chip</button>
         </div>
         <div class="column3">
             <span class="slots" id="[0][2]"></span>
             <span class="slots" id="[1][2]"></span>
             <span class="slots" id="[2][2]"></span>
             <span class="slots" id="[3][2]"></span>
-            <button class = "game-button" id="button3">Drop Chip</button>
+            <button class="game-button" id="button3">Drop Chip</button>
         </div>
         <div class="column4">
             <span class="slots" id="[0][3]"></span>
             <span class="slots" id="[1][3]"></span>
             <span class="slots" id="[2][3]"></span>
             <span class="slots" id="[3][3]"></span>
-            <button class = "game-button" id="button4">Drop Chip</button>
+            <button class="game-button" id="button4">Drop Chip</button>
         </div>
     </section>
-    <div class = "turn-area">
+    <div class="turn-area">
         <h2 class='turn-announcement'></h2>
     </div>
-    <div class = "reset-area">
-        <button id = "reset">Reset</button>
+    <div class="reset-area">
+        <button id="reset">Reset</button>
     </div>
 </body>
 
