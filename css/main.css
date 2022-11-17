@@ -35,11 +35,11 @@ section {
 }
 
 aside {
-    display: grid;
+    display: flex;
     grid-column-start: 1;
-    grid-row-start: 3;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
+    flex-direction: column;
+    text-align: center;
+    font-size: 20px;
 }
 
 button {
@@ -62,7 +62,30 @@ button {
 .top {
     margin-top: 40px;
     height: 50px;
-    padding: 2.5px;
+    margin: 2.5px;
+    font-size: 20px;
+}
+
+.points-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 0 80px;
+}
+
+aside > h2 {
+    border-bottom: 3px ridge #333399;
+    width: 200px;
+    margin-left: 125px;
+    padding: 5px;
+}
+
+.player-list > h3 {
+    margin: 15px;
+}
+
+.points > h3 {
+    margin: 15px;
 }
 
 .column1 {
@@ -100,6 +123,10 @@ button {
     grid-column-start: 3;
     justify-content: flex-end;
     align-items: flex-start;
+}
+
+.turn-area {
+    font-size: 20px;
 }
 
 
