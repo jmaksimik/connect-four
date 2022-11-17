@@ -40,6 +40,9 @@ aside {
     flex-direction: column;
     text-align: center;
     font-size: 20px;
+    font-family: 'PT Sans', sans-serif;
+    align-items: center;
+
 }
 
 button {
@@ -63,6 +66,7 @@ button {
     margin-top: 40px;
     height: 50px;
     font-size: 20px;
+    font-family: 'PT Sans', sans-serif;
 }
 
 .points-layout {
@@ -75,7 +79,6 @@ button {
 aside > h2 {
     border-bottom: 3px ridge #333399;
     width: 200px;
-    margin-left: 125px;
     padding: 5px;
 }
 
@@ -126,6 +129,7 @@ aside > h2 {
 
 .turn-area {
     font-size: 20px;
+    font-family: 'PT Sans', sans-serif;
 }
 
 

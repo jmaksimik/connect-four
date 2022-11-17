@@ -1,9 +1,7 @@
 /*----- constants -----*/
 const chipSound = new Audio();
 const winSound = new Audio();
-let player1Points = 0;
-let player2Points = 0;
-let tieCount = 0;
+
 
 
 
@@ -11,7 +9,9 @@ let tieCount = 0;
 let gameBoard;
 let playerTurn;
 let winningPlayer;
-
+let player1Points = 0;
+let player2Points = 0;
+let tieCount = 0;
 
 
 
@@ -272,7 +272,7 @@ function callWinner(){
     turnEl.innerText = "";
     playWin();
   } else if (winningPlayer === 2) {
-    announceEl.innerText = "Player Two Wins";
+    announceEl.innerText = "Player Two Wins!";
     turnEl.innerText = "";
     playWin();
   } else {
