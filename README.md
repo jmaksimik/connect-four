@@ -1,6 +1,6 @@
 # Connect Four
 ## Background
-Initially coined by Milton Bradley in 1974, Connect Four is a deceptively simple game that took the world by storm.
+Initially coined by Milton Bradley in 1974, Connect Four is a deceptively simple game that took the world by storm. Two players take turns dropping chips down a slot in the top of the board with the goal of getting four of their chips in a row. Because each player has perfect information about the other's position in the game, it is fully dependent on strategy to win the game.
 
 To give an idea of the complexity of the game, in a typical 7x6 grid, there are 4,531,985,219,092 possible positions, and mathematicians have even taken part in developing algorithms and theories to plot optimal player moves.
 
